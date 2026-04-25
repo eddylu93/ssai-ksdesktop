@@ -1,18 +1,42 @@
 # ssai-ksdesktop
 
-SSAI 快手监控 — 桌面客户端（Tauri 2.x + React 18 + Rust）。
+T05 walking skeleton for the SSAI 快手监控 desktop client. The app is a Tauri 2.x + React 18 + TypeScript 5 single-page desktop UI that only reads structured data from `ssai-server`.
 
-## 角色
-- 数据可视化（概览 / 投放监控 / 效果分析 / 告警中心）
-- IM 推送配置（企微 / 钉钉 / 飞书 / Slack）
-- 7 天本地 SQLite 缓存（权威数据在 ssai-server）
-- 跨平台：Windows x64 / macOS arm64 + x64
+## Prerequisites
 
-## 关联仓库
-- 云端服务：[ssai-server](https://github.com/eddylu93/ssai-server)
+- Node.js 20+
+- `npm` or `pnpm`
+- Rust 1.75+ for Tauri builds
 
-## 文档
-完整规格见 `docs/CODEX_SPEC.md`。
+## Development
 
-## 快速开始
-待补充。
+1. Copy `.env.example` to `.env`.
+2. Set `VITE_SERVER_URL` if your `ssai-server` is not running on `http://127.0.0.1:8080`.
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Start the desktop app:
+
+```bash
+npm run tauri dev
+```
+
+If `ssai-server` is not available, the window should still open and render an error state instead of crashing.
+
+## Build
+
+```bash
+npm run tauri build
+```
+
+## Server Dependency
+
+This client does not call Kuaishou APIs directly and does not embed secrets. It depends on `ssai-server` for advertiser and snapshot data:
+
+- `GET /api/advertisers`
+- `GET /api/advertisers/:id/snapshot/latest`
+
+The default server URL is configured through `VITE_SERVER_URL` in `.env`.

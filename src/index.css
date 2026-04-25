@@ -1,0 +1,17 @@
+@import "antd/dist/reset.css";
+
+:root {
+  color-scheme: dark;
+  font-family:
+    "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #0f0f10;
+  color: #e5e5e7;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}

@@ -37,3 +37,6 @@ test-results/
 
 # Tauri 打包产物
 src-tauri/gen/
+.npm-cache/
+.tmp/
+.corepack-home/
